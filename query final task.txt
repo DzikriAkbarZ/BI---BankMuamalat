@@ -1,0 +1,11 @@
+CREATE TABLE BI.Final_Task_BI AS
+select 
+      o.date as order_date, CategoryName as category_name, ProdName as product_name, price as product_price,
+      quantity as order_qty, (p.price*o.quantity) as total_sales, CustomerEmail as cust_email,CustomerCity as cust_city
+  from 
+    BI.orders as o
+  JOIN BI.products as p on o.ProdNumber = p.ProdNumber
+  JOIN BI.customers as c on o.CustomerID = c.CustomerID
+  JOIN BI.productcategory as pc on p.Category = pc.CategoryID
+  ORDER BY date
+;
